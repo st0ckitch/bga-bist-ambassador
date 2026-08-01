@@ -14,25 +14,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 82px; }
   body { margin: 0; background: #F6F4EE; color: #0D1B3E; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: #2743A6; }
-  a:hover { color: #C8102E; }
+  @media (hover: hover) { a:hover { color: #C8102E; } }
   @keyframes tickermove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    div[style*="tickermove"] { animation: none !important; }
+  }
 
   /* Mobile layout. The page is composed with inline styles, so small-screen
      overrides live here and need !important to win. */
   @media (max-width: 880px) {
-    nav > div { flex-wrap: wrap !important; row-gap: 10px !important; padding: 12px 16px !important; }
-    nav > div > div:last-child { flex-wrap: wrap !important; gap: 10px 12px !important; }
+    html { scroll-padding-top: 84px; }
+    nav > div { padding: 10px 16px !important; }
+    /* Desktop links hide behind the hamburger menu on small screens */
+    nav > div > div:last-of-type { display: none !important; }
+    nav button[aria-label="Menu"] { display: inline-flex !important; }
   }
-  @media (max-width: 560px) {
-    /* The CTA section repeats this button, so the nav can shed it on phones */
-    nav > div > div:last-child > button { display: none !important; }
+  @media (min-width: 881px) {
+    /* Safety: a menu left open while resizing up must not linger */
+    nav [data-screen-label="Mobile menu"] { display: none !important; }
   }
   @media (max-width: 760px) {
-    [data-screen-label^="Slide"] { padding: 34px 22px 112px !important; gap: 26px !important; }
+    [data-screen-label^="Slide"] { padding: 34px 22px 112px !important; gap: 26px !important; grid-template-columns: 1fr !important; }
     [data-screen-label^="Slide 1"] > div:last-child { min-height: 300px !important; }
+    [data-screen-label^="Slide 2"] > div:last-child, [data-screen-label^="Slide 3"] > div:last-child { min-height: 0 !important; }
+    div[style*="tickermove"] > span { font-size: 12.5px !important; }
+    input, select, textarea { font-size: 16px !important; }
+    footer > div > div:first-child > div > div > a { padding: 10px 0 !important; }
     [data-screen-label="Hero slider"] > div > div:last-child {
       left: 14px !important; right: 14px !important; bottom: 14px !important;
       justify-content: space-between !important; gap: 10px !important; padding: 8px 12px !important;
@@ -52,7 +63,7 @@
 
 <div data-screen-label="Ambassador one-pager" style="min-width: 320px;">
 
-  <nav style="position: sticky; top: 0; z-index: 60; background: rgba(246,244,238,.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,27,62,.08);">
+  <nav style="position: sticky; top: 0; z-index: 60; background: rgba(246,244,238,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,27,62,.08);">
     <div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 12px;">
         <span style="font-family: Sora, sans-serif; font-weight: 800; font-size: 15px; letter-spacing: .22em;">AMBASSADOR</span>
@@ -64,14 +75,23 @@
         <button onClick="{{ openPartner }}" style="background: transparent; border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF;">Become a partner</button>
         <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">Browse offers</a>
       </div>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(13,27,62,.25); border-radius: 12px; background: transparent; color: #0D1B3E; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
     </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F6F4EE; border-bottom: 1px solid rgba(13,27,62,.08); box-shadow: 0 22px 34px rgba(13,27,62,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
+        <a href="#offers" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">Offers</a>
+        <a href="#how" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">How it works</a>
+        <button onClick="{{ openPartnerFromMenu }}" style="margin-top: 4px; border: 1px solid rgba(13,27,62,.3); background: transparent; color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">Become a partner</button>
+        <a href="#offers" onClick="{{ closeMenu }}" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">Browse offers</a>
+      </div>
+    </sc-if>
   </nav>
 
   <section data-screen-label="Hero slider" style="max-width: 1400px; margin: 0 auto; padding: 16px 16px 0;">
     <div onMouseEnter="{{ pauseEnter }}" onMouseLeave="{{ pauseLeave }}" style="position: relative; overflow: hidden; border-radius: 28px; background: #0D1B3E;">
       <div style="display: flex; transition: transform .65s cubic-bezier(.22,.61,.36,1); transform: {{ trackTransform }};">
 
-        <div data-screen-label="Slide 1 – Programme" style="min-width: 100%; box-sizing: border-box; background: #0D1B3E; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
+        <div data-screen-label="Slide 1 – Programme" style="min-width: 100%; box-sizing: border-box; background: #0D1B3E; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
           <div style="max-width: 560px;">
             <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 18px;">PARENT LOYALTY PROGRAMME</div>
             <h1 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">One card.<br>A city of privileges.</h1>
@@ -104,7 +124,7 @@
           </div>
         </div>
 
-        <div data-screen-label="Slide 2 – Featured wellness" style="min-width: 100%; box-sizing: border-box; background: #F2B32C; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
+        <div data-screen-label="Slide 2 – Featured wellness" style="min-width: 100%; box-sizing: border-box; background: #F2B32C; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
           <div style="max-width: 560px;">
             <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #0D1B3E; margin-bottom: 18px;">FEATURED THIS MONTH</div>
             <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">Train all year<br>for less.</h2>
@@ -118,7 +138,7 @@
           </div>
         </div>
 
-        <div data-screen-label="Slide 3 – Featured travel" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
+        <div data-screen-label="Slide 3 – Featured travel" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
           <div style="max-width: 560px;">
             <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 18px;">NEW PARTNERS</div>
             <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">Weekends,<br>upgraded.</h2>
@@ -134,7 +154,7 @@
 
       </div>
 
-      <div style="position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 18px; background: rgba(13,27,62,.55); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 16px;">
+      <div style="position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 18px; background: rgba(13,27,62,.55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 16px;">
         <div style="display: flex; gap: 8px;">
           <button onClick="{{ prev }}" aria-label="Previous slide" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">←</button>
           <button onClick="{{ next }}" aria-label="Next slide" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">→</button>
@@ -230,8 +250,8 @@
   </section>
 
   <sc-if value="{{ partnerOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
-      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(520px, 100%); max-height: 90vh; overflow-y: auto; padding: 32px; box-sizing: border-box; position: relative;">
+    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; overscroll-behavior: contain;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(520px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative;">
         <button onClick="{{ closePartner }}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">✕</button>
         <sc-if value="{{ partnerSent }}" hint-placeholder-val="{{ false }}">
           <div style="text-align: center; padding: 36px 8px;">
@@ -328,7 +348,7 @@
   &quot;showTerms&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Offers&quot; }
 }">
 class Component extends DCLogic {
-  state = { slide: 0, cat: "All", paused: false, partnerOpen: false, partnerSent: false };
+  state = { slide: 0, cat: "All", paused: false, partnerOpen: false, partnerSent: false, menuOpen: false };
 
   CATS = ["Wellness & Sport", "Travel", "Medicine", "Entertainment", "Food", "Automotive", "Other"];
 
@@ -356,12 +376,13 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.startTimer();
-    this.onKey = (e) => { if (e.key === "Escape") this.setState({ partnerOpen: false }); };
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ partnerOpen: false, menuOpen: false }); };
     window.addEventListener("keydown", this.onKey);
   }
-  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener("keydown", this.onKey); }
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener("keydown", this.onKey); document.body.style.overflow = ""; }
   componentDidUpdate(prevProps) {
     if (prevProps.slideSeconds !== this.props.slideSeconds || prevProps.autoplay !== this.props.autoplay) this.startTimer();
+    document.body.style.overflow = this.state.partnerOpen ? "hidden" : "";
   }
   startTimer() {
     clearInterval(this.timer);
@@ -396,6 +417,11 @@ class Component extends DCLogic {
       goTravel: () => this.setState({ cat: "Travel" }),
       openPartner: () => this.setState({ partnerOpen: true, partnerSent: false }),
       closePartner: () => this.setState({ partnerOpen: false }),
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      openPartnerFromMenu: () => this.setState({ menuOpen: false, partnerOpen: true, partnerSent: false }),
+      menuOpen: this.state.menuOpen,
+      menuIcon: this.state.menuOpen ? "✕" : "☰",
       stopClick: (e) => e.stopPropagation(),
       submitPartner: (e) => { e.preventDefault(); this.setState({ partnerSent: true }); },
       partnerOpen: this.state.partnerOpen,

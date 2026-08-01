@@ -1579,8 +1579,10 @@
       const cls = "scp" + (n++).toString(36);
       const isPseudoElement = pseudo === "before" || pseudo === "after";
       const sel = isPseudoElement ? "." + cls + "::" + pseudo : "." + cls + ":" + pseudo;
+      const rule = sel + "{" + (isPseudoElement ? css : importantify(css)) + "}";
       el.sheet.insertRule(
-        sel + "{" + (isPseudoElement ? css : importantify(css)) + "}",
+        // Touch screens must not get sticky hover styles after a tap.
+        pseudo === "hover" ? "@media (hover: hover){" + rule + "}" : rule,
         el.sheet.cssRules.length
       );
       cache.set(k, cls);
