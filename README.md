@@ -11,8 +11,9 @@ partner businesses across Tbilisi for BGA and BIST parents.
 
 ## Deployment
 
-The site is a static page deployed to GitHub Pages automatically on every push
-via the workflow in `.github/workflows/deploy-pages.yml`.
+The site is served by GitHub Pages directly from this branch (Settings →
+Pages → Deploy from a branch). Every push redeploys it automatically; the
+`.nojekyll` file makes Pages publish the files as-is without a Jekyll build.
 
 To view locally, serve the folder with any static file server, e.g.:
 
