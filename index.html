@@ -19,6 +19,34 @@
   a { color: #2743A6; }
   a:hover { color: #C8102E; }
   @keyframes tickermove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Mobile layout. The page is composed with inline styles, so small-screen
+     overrides live here and need !important to win. */
+  @media (max-width: 880px) {
+    nav > div { flex-wrap: wrap !important; row-gap: 10px !important; padding: 12px 16px !important; }
+    nav > div > div:last-child { flex-wrap: wrap !important; gap: 10px 12px !important; }
+  }
+  @media (max-width: 560px) {
+    /* The CTA section repeats this button, so the nav can shed it on phones */
+    nav > div > div:last-child > button { display: none !important; }
+  }
+  @media (max-width: 760px) {
+    [data-screen-label^="Slide"] { padding: 34px 22px 112px !important; gap: 26px !important; }
+    [data-screen-label^="Slide 1"] > div:last-child { min-height: 300px !important; }
+    [data-screen-label="Hero slider"] > div > div:last-child {
+      left: 14px !important; right: 14px !important; bottom: 14px !important;
+      justify-content: space-between !important; gap: 10px !important; padding: 8px 12px !important;
+    }
+    #how { padding: 56px 18px 24px !important; }
+    #offers { padding: 44px 18px 60px !important; }
+    [data-screen-label="Become a partner CTA"] { padding: 0 18px 64px !important; }
+    [data-screen-label="Become a partner CTA"] > div { padding: 32px 22px !important; }
+    [data-screen-label="Become a partner CTA"] > div > button { width: 100%; }
+    [data-screen-label="Partner form popup"] { align-items: flex-start !important; padding: 12px !important; }
+    [data-screen-label="Partner form popup"] > div { padding: 26px 18px !important; }
+    footer > div { padding: 48px 18px 24px !important; }
+    footer > div > div:first-child { gap: 28px !important; padding-bottom: 30px !important; }
+  }
 </style>
 </helmet>
 
@@ -84,7 +112,7 @@
             <a href="#offers" onClick="{{ goWellness }}" style="display: inline-block; background: #0D1B3E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #16295B; color: #F2B32C;">See wellness offers</a>
           </div>
           <div style="min-height: 340px; display: flex; align-items: center;">
-            <div style="width: 100%; height: 360px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.25);">
+            <div style="width: 100%; height: clamp(220px, 60vw, 360px); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.25);">
               <image-slot id="featured-wellness" shape="rounded" radius="20" placeholder="Drop a gym / wellness photo"></image-slot>
             </div>
           </div>
@@ -98,7 +126,7 @@
             <a href="#offers" onClick="{{ goTravel }}" style="display: inline-block; background: #C8102E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E;">See travel offers</a>
           </div>
           <div style="min-height: 340px; display: flex; align-items: center;">
-            <div style="width: 100%; height: 360px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.18);">
+            <div style="width: 100%; height: clamp(220px, 60vw, 360px); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.18);">
               <image-slot id="featured-travel" shape="rounded" radius="20" placeholder="Drop a resort / travel photo"></image-slot>
             </div>
           </div>
