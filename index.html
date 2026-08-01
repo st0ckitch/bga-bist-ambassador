@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F6F4EE; color: #0D1B3E; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #2743A6; }
+  a:hover { color: #C8102E; }
+  @keyframes tickermove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</helmet>
+
+<div data-screen-label="Ambassador one-pager" style="min-width: 320px;">
+
+  <nav style="position: sticky; top: 0; z-index: 60; background: rgba(246,244,238,.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,27,62,.08);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-family: Sora, sans-serif; font-weight: 800; font-size: 15px; letter-spacing: .22em;">AMBASSADOR</span>
+        <span style="font-size: 10.5px; font-weight: 700; letter-spacing: .14em; color: #16295B; border: 1px solid rgba(22,41,91,.25); border-radius: 999px; padding: 4px 10px;">BGA • BIST</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 22px;">
+        <a href="#offers" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">Offers</a>
+        <a href="#how" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">How it works</a>
+        <button onClick="{{ openPartner }}" style="background: transparent; border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF;">Become a partner</button>
+        <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">Browse offers</a>
+      </div>
+    </div>
+  </nav>
+
+  <section data-screen-label="Hero slider" style="max-width: 1400px; margin: 0 auto; padding: 16px 16px 0;">
+    <div onMouseEnter="{{ pauseEnter }}" onMouseLeave="{{ pauseLeave }}" style="position: relative; overflow: hidden; border-radius: 28px; background: #0D1B3E;">
+      <div style="display: flex; transition: transform .65s cubic-bezier(.22,.61,.36,1); transform: {{ trackTransform }};">
+
+        <div data-screen-label="Slide 1 – Programme" style="min-width: 100%; box-sizing: border-box; background: #0D1B3E; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
+          <div style="max-width: 560px;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 18px;">PARENT LOYALTY PROGRAMME</div>
+            <h1 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">One card.<br>A city of privileges.</h1>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Exclusive offers from partner businesses across Tbilisi – for every BGA and BIST parent, in wellness, travel, dining and more.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #FFFFFF;">Browse all offers</a>
+              <a href="#how" style="border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="border-color: #F2B32C; color: #F2B32C;">How it works</a>
+            </div>
+          </div>
+          <div style="position: relative; min-height: 340px; display: flex; align-items: center; justify-content: center;">
+            <div style="position: absolute; width: 300px; height: 300px; border: 2px solid rgba(242,179,44,.28); border-radius: 50%; transform: translate(60px, -30px);"></div>
+            <div style="position: absolute; width: 180px; height: 180px; border: 2px solid rgba(200,16,46,.35); border-radius: 50%; transform: translate(-140px, 90px);"></div>
+            <div style="position: relative; width: min(400px, 92%); aspect-ratio: 1.6; border-radius: 22px; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-5deg); background: linear-gradient(135deg, #23408F 0%, #16295B 45%, #0D1B3E 100%); box-shadow: 0 30px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.15);">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .3em; color: #F2B32C;">AMBASSADOR</span>
+                <span style="font-size: 10px; font-weight: 700; letter-spacing: .12em; color: #FFFFFF; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 4px 9px;">BGA • BIST</span>
+              </div>
+              <div style="width: 46px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, #F8D06B, #F2B32C 60%, #D99A14);"></div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;">
+                <div>
+                  <div style="font-size: 9.5px; font-weight: 700; letter-spacing: .2em; color: rgba(255,255,255,.55); margin-bottom: 4px;">PARENT</div>
+                  <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 700; color: #FFFFFF; letter-spacing: .02em;">N. Beridze</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-size: 9.5px; font-weight: 700; letter-spacing: .2em; color: rgba(255,255,255,.55); margin-bottom: 4px;">ISSUE DATE</div>
+                  <div style="font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #FFFFFF;">25 / 05 / 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-screen-label="Slide 2 – Featured wellness" style="min-width: 100%; box-sizing: border-box; background: #F2B32C; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
+          <div style="max-width: 560px;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #0D1B3E; margin-bottom: 18px;">FEATURED THIS MONTH</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">Train all year<br>for less.</h2>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.75); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Lisi Lake Fitness Club – 25% off annual memberships for Ambassador cardholders, including pool and group classes.</p>
+            <a href="#offers" onClick="{{ goWellness }}" style="display: inline-block; background: #0D1B3E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #16295B; color: #F2B32C;">See wellness offers</a>
+          </div>
+          <div style="min-height: 340px; display: flex; align-items: center;">
+            <div style="width: 100%; height: 360px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.25);">
+              <image-slot id="featured-wellness" shape="rounded" radius="20" placeholder="Drop a gym / wellness photo"></image-slot>
+            </div>
+          </div>
+        </div>
+
+        <div data-screen-label="Slide 3 – Featured travel" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
+          <div style="max-width: 560px;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 18px;">NEW PARTNERS</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">Weekends,<br>upgraded.</h2>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Kvareli Lake Resort – 20% off stays from Sunday to Thursday, plus late checkout for Ambassador families.</p>
+            <a href="#offers" onClick="{{ goTravel }}" style="display: inline-block; background: #C8102E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E;">See travel offers</a>
+          </div>
+          <div style="min-height: 340px; display: flex; align-items: center;">
+            <div style="width: 100%; height: 360px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.18);">
+              <image-slot id="featured-travel" shape="rounded" radius="20" placeholder="Drop a resort / travel photo"></image-slot>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 18px; background: rgba(13,27,62,.55); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 16px;">
+        <div style="display: flex; gap: 8px;">
+          <button onClick="{{ prev }}" aria-label="Previous slide" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">←</button>
+          <button onClick="{{ next }}" aria-label="Next slide" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">→</button>
+        </div>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="3">
+            <button onClick="{{ dot.onClick }}" aria-label="Go to slide" style="{{ dot.style }}"></button>
+          </sc-for>
+        </div>
+        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .18em; color: rgba(255,255,255,.85);">{{ slideNum }} / 03</span>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width: 1400px; margin: 14px auto 0; padding: 0 16px;">
+    <div style="overflow: hidden; border-radius: 999px; background: #0D1B3E;">
+      <div style="display: flex; width: max-content; animation: tickermove 30s linear infinite;">
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">WELLNESS &amp; SPORT ✦ TRAVEL ✦ MEDICINE ✦ ENTERTAINMENT ✦ FOOD ✦ AUTOMOTIVE ✦ OTHER ✦&nbsp;</span>
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">WELLNESS &amp; SPORT ✦ TRAVEL ✦ MEDICINE ✦ ENTERTAINMENT ✦ FOOD ✦ AUTOMOTIVE ✦ OTHER ✦&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="how" data-screen-label="How it works" style="max-width: 1200px; margin: 0 auto; padding: 76px 24px 36px;">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">USING YOUR BENEFITS</div>
+    <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 28px; letter-spacing: -0.01em;">How it works</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px;">
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px;">
+        <div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">01</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">Choose an offer</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Browse the list below – every offer is available to all BGA and BIST parents, all year round.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px;">
+        <div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">02</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">Visit the partner</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">No registration or booking through the school is needed – go directly to the partner location.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px;">
+        <div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">03</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">Show your parent card</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Present your BGA or BIST parent card before paying, and the discount is applied on the spot.</p>
+      </div>
+    </div>
+    <div style="margin-top: 18px; background: #0D1B3E; color: #FFFFFF; border-radius: 20px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <div style="width: 58px; height: 38px; flex: 0 0 auto; border-radius: 7px; background: linear-gradient(135deg, #F8D06B, #F2B32C 60%, #D99A14); display: flex; align-items: center; justify-content: center;">
+        <span style="font-family: Sora, sans-serif; font-size: 7px; font-weight: 800; letter-spacing: .18em; color: #0D1B3E;">AMB</span>
+      </div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; flex: 1 1 320px;"><strong>Your parent card is your pass.</strong> To redeem any offer, simply present your valid BGA or BIST parent card at the partner location before you pay – no coupons or promo codes required.</p>
+    </div>
+  </section>
+
+  <section id="offers" data-screen-label="Offers" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 84px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
+      <div>
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">PARTNER NETWORK</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0; letter-spacing: -0.01em;">All offers</h2>
+      </div>
+      <div style="font-size: 14px; font-weight: 600; color: #5A6478;">{{ offerCountLabel }}</div>
+    </div>
+
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px;">
+      <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="8">
+        <button onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}<span style="opacity: .55; font-weight: 700;">{{ chip.count }}</span></button>
+      </sc-for>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 18px;">
+      <sc-for list="{{ cards }}" as="card" hint-placeholder-count="6">
+        <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: all .3s;" style-hover="transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13,27,62,.12); border-color: #0D1B3E;">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+            <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; color: #16295B; text-transform: uppercase;">{{ card.cat }}</span>
+            <span style="background: #F2B32C; color: #0D1B3E; font-family: Sora, sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap;">{{ card.badge }}</span>
+          </div>
+          <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.01em;">{{ card.partner }}</div>
+          <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5A6478;">{{ card.deal }}</p>
+          <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top: auto; padding-top: 12px; border-top: 1px dashed #E3E0D6; font-size: 12px; font-weight: 600; color: #9AA0AF;">{{ card.note }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Become a partner CTA" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 84px;">
+    <div style="background: #16295B; color: #FFFFFF; border-radius: 28px; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
+      <div style="max-width: 60ch;">
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 12px;">FOR BUSINESSES</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(24px, 3vw, 34px); margin: 0 0 10px; letter-spacing: -0.01em;">Run a business in Tbilisi?</h2>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.72); text-wrap: pretty;">Join the Ambassador partner network and introduce your offer to more than 1,000 BGA and BIST families.</p>
+      </div>
+      <button onClick="{{ openPartner }}" style="background: #F2B32C; border: none; color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 800; padding: 15px 26px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF;">Become a partner</button>
+    </div>
+  </section>
+
+  <sc-if value="{{ partnerOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(520px, 100%); max-height: 90vh; overflow-y: auto; padding: 32px; box-sizing: border-box; position: relative;">
+        <button onClick="{{ closePartner }}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">✕</button>
+        <sc-if value="{{ partnerSent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align: center; padding: 36px 8px;">
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
+            <h3 style="font-family: Sora, sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">Application received</h3>
+            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 38ch;">Thank you for your interest in the Ambassador programme. Our team will review your offer and get back to you within five working days.</p>
+            <button onClick="{{ closePartner }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">Done</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ partnerNotSent }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom: 22px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 10px;">FOR BUSINESSES</div>
+            <h3 style="font-family: Sora, sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">Become a partner</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Tell us about your business and the offer you would like to make to BGA and BIST families.</p>
+          </div>
+          <form onSubmit="{{ submitPartner }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">BUSINESS NAME
+                <input type="text" name="business" required="{{ true }}" placeholder="e.g. Terrace Seventeen" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
+              </label>
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">CATEGORY
+                <select name="category" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 10px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
+                  <option>Wellness &amp; Sport</option>
+                  <option>Travel</option>
+                  <option>Medicine</option>
+                  <option>Entertainment</option>
+                  <option>Food</option>
+                  <option>Automotive</option>
+                  <option>Other</option>
+                </select>
+              </label>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">CONTACT PERSON
+                <input type="text" name="contact" required="{{ true }}" placeholder="Full name" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
+              </label>
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">PHONE
+                <input type="tel" name="phone" placeholder="+995" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
+              </label>
+            </div>
+            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">EMAIL
+              <input type="email" name="email" required="{{ true }}" placeholder="name@company.ge" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">YOUR PROPOSED OFFER
+              <textarea name="offer" rows="{{ three }}" placeholder="e.g. 15% off the full menu for Ambassador cardholders" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C; resize: vertical;"></textarea>
+            </label>
+            <button type="submit" style="margin-top: 4px; background: #F2B32C; border: none; color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 800; padding: 14px 24px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">Send application</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <footer data-screen-label="Footer" style="background: #0D1B3E; color: #FFFFFF;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+            <span style="font-family: Sora, sans-serif; font-weight: 800; font-size: 14px; letter-spacing: .22em;">AMBASSADOR</span>
+          </div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); max-width: 34ch;">A loyalty programme for the parents of the British-Georgian Academy and the British International School of Tbilisi.</p>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">BGA</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+            <a href="tel:+995322251253" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 251 253</a>
+            <a href="mailto:bga@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">bga@bga.ge</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">BIST</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+            <a href="tel:+995322801919" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 80 19 19</a>
+            <a href="mailto:bist@bist.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">bist@bist.ge</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">CAMPUS</div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85);">Leo Kvachadze 17<br>Lisi Lake Area<br>Tbilisi 0186, Georgia</p>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; font-size: 12px; color: rgba(255,255,255,.5);">
+        <span>© 2026 BGA • BIST. All rights reserved.</span>
+        <span style="max-width: 60ch;">Offers are provided by partner businesses and may change or end without notice. Parent cards are personal and non-transferable.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;autoplay&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero slider&quot; },
+  &quot;slideSeconds&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 6, &quot;min&quot;: 3, &quot;max&quot;: 12, &quot;step&quot;: 1, &quot;unit&quot;: &quot;s&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Hero slider&quot; },
+  &quot;showTerms&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Offers&quot; }
+}">
+class Component extends DCLogic {
+  state = { slide: 0, cat: "All", paused: false, partnerOpen: false, partnerSent: false };
+
+  CATS = ["Wellness & Sport", "Travel", "Medicine", "Entertainment", "Food", "Automotive", "Other"];
+
+  OFFERS = [
+    { cat: "Wellness & Sport", partner: "Lisi Lake Fitness Club", badge: "−25%", deal: "25% off annual memberships, including pool and group classes.", note: "One membership per cardholder" },
+    { cat: "Wellness & Sport", partner: "AquaLife Swimming Centre", badge: "2×1", deal: "Two-for-one day passes at weekends, for parents and children.", note: "Saturdays and Sundays only" },
+    { cat: "Wellness & Sport", partner: "Vake Racket Club", badge: "−15%", deal: "15% off court hire and the junior tennis academy.", note: "Booking required" },
+    { cat: "Travel", partner: "Caucasus Voyager", badge: "−10%", deal: "10% off package tours and guided trips across Georgia.", note: "Not combinable with seasonal sales" },
+    { cat: "Travel", partner: "Kvareli Lake Resort", badge: "−20%", deal: "20% off stays from Sunday to Thursday, plus late checkout.", note: "Subject to availability" },
+    { cat: "Travel", partner: "AeroTransfer", badge: "−30%", deal: "30% off private airport transfers, any time of day.", note: "Book at least 12 hours ahead" },
+    { cat: "Medicine", partner: "MediPoint Clinic", badge: "−20%", deal: "20% off consultations and annual family check-ups.", note: "All branches in Tbilisi" },
+    { cat: "Medicine", partner: "DentArt Studio", badge: "−25%", deal: "25% off dental hygiene, whitening and paediatric dentistry.", note: "Weekdays only" },
+    { cat: "Medicine", partner: "OptiVision", badge: "GIFT", deal: "Free eye exam for the family, plus 15% off frames and lenses.", note: "One exam per family member per year" },
+    { cat: "Entertainment", partner: "CineHall", badge: "2×1", deal: "Two tickets for the price of one, Tuesday to Wednesday.", note: "Up to four tickets per visit" },
+    { cat: "Entertainment", partner: "FunCity Park", badge: "−20%", deal: "20% off family passes to all rides and attractions.", note: "Valid every day" },
+    { cat: "Entertainment", partner: "Tbilisi Concert Series", badge: "−15%", deal: "15% off season tickets and selected performances.", note: "Selected dates only" },
+    { cat: "Food", partner: "Terrace Seventeen", badge: "−15%", deal: "15% off the full menu, including weekend brunch.", note: "Dine-in only" },
+    { cat: "Food", partner: "Coffee Lab", badge: "GIFT", deal: "A free pastry with any drink, every day before noon.", note: "One per cardholder per day" },
+    { cat: "Food", partner: "Bread & Butter Bakery", badge: "−10%", deal: "10% off everything in store, seven days a week.", note: "All locations" },
+    { cat: "Automotive", partner: "AutoSpa Detailing", badge: "−20%", deal: "20% off full interior and exterior detailing.", note: "Booking required" },
+    { cat: "Automotive", partner: "TyrePro Service", badge: "FREE", deal: "Free seasonal tyre change with any tyre storage plan.", note: "Twice per year" },
+    { cat: "Other", partner: "BookHouse", badge: "−15%", deal: "15% off books, stationery and school supplies.", note: "Excludes gift cards" },
+    { cat: "Other", partner: "Lingua Centre", badge: "−10%", deal: "10% off language courses for parents and children.", note: "New enrolments only" }
+  ];
+
+  componentDidMount() {
+    this.startTimer();
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ partnerOpen: false }); };
+    window.addEventListener("keydown", this.onKey);
+  }
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener("keydown", this.onKey); }
+  componentDidUpdate(prevProps) {
+    if (prevProps.slideSeconds !== this.props.slideSeconds || prevProps.autoplay !== this.props.autoplay) this.startTimer();
+  }
+  startTimer() {
+    clearInterval(this.timer);
+    const s = Number(this.props.slideSeconds ?? 6);
+    this.timer = setInterval(() => {
+      if ((this.props.autoplay ?? false) && !this.state.paused) this.setState(st => ({ slide: (st.slide + 1) % 3 }));
+    }, s * 1000);
+  }
+
+  renderVals() {
+    const { slide, cat } = this.state;
+    const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #D8D4C6", background: "#FFFFFF", color: "#0D1B3E", fontFamily: "Manrope, sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
+    const chips = ["All", ...this.CATS].map(c => ({
+      label: c === "All" ? "All offers" : c,
+      count: c === "All" ? this.OFFERS.length : this.OFFERS.filter(o => o.cat === c).length,
+      onClick: () => this.setState({ cat: c }),
+      style: c === cat ? { ...chipBase, background: "#0D1B3E", color: "#FFFFFF", borderColor: "#0D1B3E" } : chipBase
+    }));
+    const cards = cat === "All" ? this.OFFERS : this.OFFERS.filter(o => o.cat === cat);
+    const dots = [0, 1, 2].map(i => ({
+      onClick: () => this.setState({ slide: i }),
+      style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#F2B32C" : "rgba(255,255,255,.35)" }
+    }));
+    return {
+      trackTransform: `translateX(-${slide * 100}%)`,
+      slideNum: String(slide + 1).padStart(2, "0"),
+      prev: () => this.setState(s => ({ slide: (s.slide + 2) % 3 })),
+      next: () => this.setState(s => ({ slide: (s.slide + 1) % 3 })),
+      pauseEnter: () => this.setState({ paused: true }),
+      pauseLeave: () => this.setState({ paused: false }),
+      goWellness: () => this.setState({ cat: "Wellness & Sport" }),
+      goTravel: () => this.setState({ cat: "Travel" }),
+      openPartner: () => this.setState({ partnerOpen: true, partnerSent: false }),
+      closePartner: () => this.setState({ partnerOpen: false }),
+      stopClick: (e) => e.stopPropagation(),
+      submitPartner: (e) => { e.preventDefault(); this.setState({ partnerSent: true }); },
+      partnerOpen: this.state.partnerOpen,
+      partnerSent: this.state.partnerSent,
+      partnerNotSent: !this.state.partnerSent,
+      three: 3,
+      dots, chips, cards,
+      offerCountLabel: `${cards.length} ${cards.length === 1 ? "offer" : "offers"}${cat === "All" ? " · 7 categories" : ""}`,
+      showNotes: this.props.showTerms ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
