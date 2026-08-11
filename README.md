@@ -8,6 +8,8 @@ partner businesses across Tbilisi for BGA and BIST parents.
 - `index.html` — the site (a single self-contained page)
 - `support.js` — page runtime (renders the page content and interactions)
 - `image-slot.js` — image slot component used by the page
+- `logos/` — partner logos (each offer card shows its logo in a fixed-size
+  container, so any logo size fits automatically)
 
 ## Deployment
 
