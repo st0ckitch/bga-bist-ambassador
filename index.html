@@ -109,8 +109,8 @@
           <div style="position: relative; min-height: 340px; display: flex; align-items: center; justify-content: center;">
             <div style="position: absolute; width: 300px; height: 300px; border: 2px solid rgba(242,179,44,.28); border-radius: 50%; transform: translate(60px, -30px);"></div>
             <div style="position: absolute; width: 180px; height: 180px; border: 2px solid rgba(200,16,46,.35); border-radius: 50%; transform: translate(-140px, 90px);"></div>
-            <div style="position: relative; width: min(460px, 100%); height: clamp(280px, 40vw, 380px); animation: cardfloat 5.5s ease-in-out infinite; will-change: transform;">
-              <model-viewer src="assets/ambassador-card.glb" alt="Ambassador parent card" camera-controls disable-zoom disable-pan disable-tap auto-rotate rotation-per-second="20deg" interaction-prompt="none" camera-orbit="10deg 78deg 105%" shadow-intensity="1.1" shadow-softness="0.9" exposure="1.15" loading="eager" style="width: 100%; height: 100%; background: transparent; --progress-bar-color: #F2B32C; --progress-bar-height: 2px;"></model-viewer>
+            <div style="position: relative; width: min(600px, 100%); height: clamp(320px, 46vw, 480px); animation: cardfloat 5.5s ease-in-out infinite; will-change: transform;">
+              <model-viewer src="assets/ambassador-card.glb" alt="Ambassador parent card" camera-controls disable-zoom disable-pan disable-tap auto-rotate rotation-per-second="20deg" interaction-prompt="none" camera-orbit="10deg 78deg 88%" camera-target="auto auto auto" field-of-view="28deg" shadow-intensity="1.1" shadow-softness="0.9" exposure="1.15" loading="eager" style="width: 100%; height: 100%; background: transparent; --progress-bar-color: #F2B32C; --progress-bar-height: 2px;"></model-viewer>
             </div>
           </div>
         </div>
@@ -223,6 +223,7 @@
             <img src="{{ card.logo }}" alt="{{ card.partner }} logo" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: left center;">
           </div>
           <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ card.partner }}</div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.55; color: #5A6478; height: 63px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{{ card.desc }}</p>
           <div style="display: flex; align-items: center; gap: 10px; background: rgba(242,179,44,.16); border: 1px solid rgba(242,179,44,.45); border-radius: 12px; padding: 10px 14px;">
             <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
             <div style="font-size: 14px; font-weight: 800; color: #0D1B3E; line-height: 1.5; height: 42px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ card.benefit }}</div>
