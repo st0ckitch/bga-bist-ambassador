@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" role="img" aria-label="Circle">
+  <g transform="translate(4 4) scale(0.3200)">
+    <path d="M 17.373 65.214 A 36.0 36.0 0 0 1 65.214 17.373" fill="none" stroke="#0D1B3E" stroke-width="12.0" stroke-linecap="round"/>
+    <path d="M 82.627 34.786 A 36.0 36.0 0 0 1 34.786 82.627" fill="none" stroke="#F2B32C" stroke-width="12.0" stroke-linecap="round"/>
+  </g>
+  <text x="50" y="29.4" fill="#0D1B3E" font-family="Sora, Manrope, system-ui, sans-serif" font-weight="800" font-size="26" letter-spacing="5.72">CIRCLE</text>
+</svg>

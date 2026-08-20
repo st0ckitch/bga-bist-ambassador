@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Circle (segmented)">
+  <path d="M 41.291 15.069 A 36.0 36.0 0 0 1 58.709 15.069" fill="none" stroke="#0D1B3E" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 71.880 21.412 A 36.0 36.0 0 0 1 82.740 35.030" fill="none" stroke="#F2B32C" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 85.993 49.282 A 36.0 36.0 0 0 1 82.117 66.264" fill="none" stroke="#0D1B3E" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 73.003 77.693 A 36.0 36.0 0 0 1 57.309 85.250" fill="none" stroke="#0D1B3E" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 42.691 85.250 A 36.0 36.0 0 0 1 26.997 77.693" fill="none" stroke="#0D1B3E" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 17.883 66.264 A 36.0 36.0 0 0 1 14.007 49.282" fill="none" stroke="#0D1B3E" stroke-width="9.0" stroke-linecap="round"/>
+  <path d="M 17.260 35.030 A 36.0 36.0 0 0 1 28.120 21.412" fill="none" stroke="#0D1B3E" stroke-width="9.0" stroke-linecap="round"/>
+</svg>

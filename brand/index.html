@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circle — brand marks</title>
+<link rel="icon" href="circle-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B3E; --deep: #16295B; --gold: #F2B32C;
+    --cream: #F6F4EE; --crimson: #C8102E; --line: #E7E4DB; --muted: #5A6478;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--navy);
+         font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  main { max-width: 1100px; margin: 0 auto; padding: 56px 24px 96px; }
+  .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .24em; color: var(--crimson); margin-bottom: 14px; }
+  h1 { font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(30px, 4vw, 44px);
+       letter-spacing: -0.01em; margin: 0 0 14px; }
+  h2 { font-family: Sora, sans-serif; font-weight: 800; font-size: 22px;
+       letter-spacing: -0.01em; margin: 0 0 6px; }
+  .lede { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 60ch; margin: 0 0 52px; }
+  section { margin-bottom: 52px; }
+  .head { margin-bottom: 20px; }
+  .note { font-size: 13.5px; line-height: 1.6; color: var(--muted); max-width: 62ch; margin: 0; }
+  .panel { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+  .panel.dark { background: var(--navy); border-color: rgba(255,255,255,.12); }
+  .panel.dark .cap { color: rgba(255,255,255,.55); }
+  .row { display: flex; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .cap { font-size: 10.5px; font-weight: 800; letter-spacing: .16em; color: #9AA0AF; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .grid .panel { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .grid h2 { font-size: 17px; margin: 0; }
+
+  /* Nav lockup, matching the live site: sticky bar, 15px Sora at .22em */
+  .navbar { background: rgba(246,244,238,.88); border: 1px solid rgba(13,27,62,.08);
+            border-radius: 16px; overflow: hidden; }
+  .navbar > div { display: flex; align-items: center; justify-content: space-between;
+                  gap: 16px; padding: 14px 24px; }
+  .lockup { display: flex; align-items: center; gap: 10px; }
+  .lockup .word { font-family: Sora, sans-serif; font-weight: 800; font-size: 15px; letter-spacing: .22em; }
+  .endorse { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; color: var(--deep);
+             border: 1px solid rgba(22,41,91,.25); border-radius: 999px; padding: 4px 10px; }
+  .navlinks { display: flex; align-items: center; gap: 22px; }
+  .navlinks a { color: var(--navy); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .ghost { background: transparent; border: 1px solid rgba(13,27,62,.3); color: var(--navy);
+           font-family: Manrope, sans-serif; font-size: 13.5px; font-weight: 700;
+           padding: 10px 18px; border-radius: 999px; }
+  .solid { background: var(--gold); color: var(--navy); font-size: 13.5px; font-weight: 800;
+           padding: 10px 18px; border-radius: 999px; text-decoration: none; }
+
+  /* Card-is-your-pass band, matching the live site */
+  .band { background: var(--navy); color: #fff; border-radius: 20px; padding: 24px 28px;
+          display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .band p { margin: 0; font-size: 15px; line-height: 1.6; flex: 1 1 320px; }
+
+  .footer { background: var(--navy); color: #fff; border-radius: 20px; padding: 34px 30px; }
+  .footer .lockup .word { color: #fff; }
+  .footer p { margin: 14px 0 0; font-size: 13.5px; line-height: 1.6;
+              color: rgba(255,255,255,.65); max-width: 34ch; }
+
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .sw { border-radius: 12px; padding: 14px 16px; font-size: 11px; font-weight: 800;
+        letter-spacing: .06em; min-width: 118px; border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="eyebrow">BGA • BIST</div>
+  <h1>Circle — brand marks</h1>
+  <p class="lede">Two arcs with pill-rounded caps, offset so they close into one ring with two
+  deliberate gaps. Two schools completing one circle; the gaps keep it open, because the
+  network is still growing. Every mark below is generated from
+  <code>build-marks.py</code> on one construction circle.</p>
+
+  <section>
+    <div class="head">
+      <h2>The mark, at size</h2>
+      <p class="note">The nav renders at 22px and the favicon at 16px — those, not the
+      120px render, are where a mark lives or dies. At and below 32px on a light
+      background the mark switches to a <strong>small cut</strong>: stroke 14 instead of 12,
+      and the deeper gold <code>#D99A14</code>, because <code>#F2B32C</code> on cream loses
+      the lower arc and the ring reads lopsided.</p>
+    </div>
+    <div class="panel">
+      <div class="row">
+        <div class="item"><img src="circle-mark.svg" width="120" height="120" alt=""><span class="cap">120 PX</span></div>
+        <div class="item"><img src="circle-mark.svg" width="56" height="56" alt=""><span class="cap">56 PX</span></div>
+        <div class="item"><img src="circle-mark.svg" width="32" height="32" alt=""><span class="cap">32 PX</span></div>
+        <div class="item"><img src="circle-mark.svg" width="22" height="22" alt=""><span class="cap">22 PX · STANDARD</span></div>
+        <div class="item"><img src="circle-mark-small.svg" width="22" height="22" alt=""><span class="cap">22 PX · SMALL CUT</span></div>
+        <div class="item"><img src="circle-favicon.svg" width="16" height="16" alt=""><span class="cap">16 PX · TAB</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>Reversed on navy</h2>
+      <p class="note">Half the brand surface is <code>#0D1B3E</code> — the hero, the band and
+      the whole footer — so the reversed cut is not an afterthought.</p>
+    </div>
+    <div class="panel dark">
+      <div class="row">
+        <div class="item"><img src="circle-mark-reverse.svg" width="120" height="120" alt=""><span class="cap">120 PX</span></div>
+        <div class="item"><img src="circle-mark-reverse.svg" width="56" height="56" alt=""><span class="cap">56 PX</span></div>
+        <div class="item"><img src="circle-mark-reverse.svg" width="32" height="32" alt=""><span class="cap">32 PX</span></div>
+        <div class="item"><img src="circle-mark-reverse.svg" width="22" height="22" alt=""><span class="cap">22 PX · NAV</span></div>
+        <div class="item"><img src="circle-mark-gold.svg" width="22" height="22" alt=""><span class="cap">22 PX · GOLD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>In the nav</h2>
+      <p class="note">Mark at 24px, wordmark in Sora 800 at .22em tracking — the site's
+      existing treatment, with the mark dropped into the space already waiting for it.</p>
+    </div>
+    <div class="navbar">
+      <div>
+        <div class="lockup">
+          <img src="circle-mark-small.svg" width="24" height="24" alt="">
+          <span class="word">CIRCLE</span>
+          <span class="endorse">BGA • BIST</span>
+        </div>
+        <div class="navlinks">
+          <a href="#">Offers</a>
+          <a href="#">How it works</a>
+          <button class="ghost">Become a partner</button>
+          <a class="solid" href="#">Browse offers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>In the band, and in the footer</h2>
+      <p class="note">The gold chip currently carries cropped “AMB” text. It becomes the
+      mark's home at 58×38.</p>
+    </div>
+    <div class="band">
+      <img src="circle-chip.svg" width="58" height="38" alt="">
+      <p><strong>Your parent card is your pass.</strong> To redeem any offer, simply present
+      your valid BGA or BIST parent card at the partner location before you pay — no coupons
+      or promo codes required.</p>
+    </div>
+    <div style="height: 18px"></div>
+    <div class="footer">
+      <div class="lockup">
+        <img src="circle-mark-reverse.svg" width="22" height="22" alt="">
+        <span class="word">CIRCLE</span>
+      </div>
+      <p>A loyalty programme for the parents of the British-Georgian Academy and the British
+      International School of Tbilisi.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>Alternates</h2>
+      <p class="note">Kept for comparison. The segmented ring tells the richer story but
+      drifts toward a loading spinner below ~32px; the monogram is safer and quieter.</p>
+    </div>
+    <div class="grid">
+      <div class="panel">
+        <h2>Primary — two arcs</h2>
+        <img src="circle-mark.svg" width="88" height="88" alt="">
+        <p class="note">Two parties, one circle. Reads at 16px.</p>
+      </div>
+      <div class="panel">
+        <h2>Segmented ring</h2>
+        <img src="circle-segmented.svg" width="88" height="88" alt="">
+        <p class="note">Seven arcs, one per partner category, one gold.</p>
+      </div>
+      <div class="panel">
+        <h2>C-monogram</h2>
+        <img src="circle-monogram.svg" width="88" height="88" alt="">
+        <p class="note">A C that a gold arc closes into a circle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>One colour</h2>
+      <p class="note">For embroidery, stamps, partner windows and anywhere the two-colour
+      cut cannot be reproduced.</p>
+    </div>
+    <div class="panel">
+      <div class="row">
+        <div class="item"><img src="circle-mark-navy.svg" width="72" height="72" alt=""><span class="cap">NAVY</span></div>
+        <div class="item"><img src="circle-mark-gold.svg" width="72" height="72" alt=""><span class="cap">GOLD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>Palette</h2></div>
+    <div class="swatches">
+      <div class="sw" style="background:#0D1B3E;color:#fff">NAVY · #0D1B3E</div>
+      <div class="sw" style="background:#16295B;color:#fff">DEEP · #16295B</div>
+      <div class="sw" style="background:#F2B32C;color:#0D1B3E">GOLD · #F2B32C</div>
+      <div class="sw" style="background:#F6F4EE;color:#0D1B3E">CREAM · #F6F4EE</div>
+      <div class="sw" style="background:#C8102E;color:#fff">CRIMSON · #C8102E</div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
